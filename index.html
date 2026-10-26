@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, My Heartbeat 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --pink: #ff8fbd;
+  --light: #ffe4f0;
+  --purple: #c9b6ff;
+  --deep: #7b397c;
+  --white: #fffaff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #63375f;
+  font-family: 'Hind Siliguri', sans-serif;
+  background: linear-gradient(140deg, #ffe2ef, #eee4ff, #fff0f7);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "♡  ✧  💗  ✦  ♡  ✧  💕";
+  position: fixed;
+  top: 8px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 22px;
+  opacity: .6;
+  pointer-events: none;
+}
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding: 65px 17px 35px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: appear .65s ease;
+}
+
+.page.active { display: flex; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  width: 100%;
+  max-width: 520px;
+  padding: 28px 21px;
+  border: 2px solid rgba(255,255,255,.85);
+  border-radius: 28px;
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 12px 38px rgba(159,93,150,.17);
+  text-align: center;
+}
+
+h1, h2 {
+  font-family: 'Poppins', 'Hind Siliguri', sans-serif;
+  line-height: 1.45;
+}
+
+h1 {
+  font-size: clamp(25px, 7vw, 38px);
+  color: #d34f94;
+  margin: 5px 0 18px;
+}
+
+h2 {
+  color: #9a64bc;
+  font-size: 26px;
+}
+
+p { line-height: 1.9; }
+
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 15px;
+  border: 2px solid #e5b9ef;
+  background: #fffaff;
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+}
+
+input:focus { border-color: #d76fa8; }
+
+button {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 26px;
+  margin-top: 16px;
+  background: linear-gradient(100deg, #ff8fbd, #b99bff);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 16px #d7a2d866;
+  transition: transform .2s;
+}
+
+button:active { transform: scale(.96); }
+
+.error {
+  color: #d13c78;
+  min-height: 25px;
+}
+
+.subtitle { color: #956b9e; }
+
+.wish-card { max-width: 650px; }
+
+.wish-text {
+  text-align: left;
+  font-size: 16px;
+  white-space: pre-line;
+  line-height: 2;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+  margin-top: 20px;
+}
+
+.memory {
+  margin: 0;
+  padding: 8px;
+  border-radius: 17px;
+  background: white;
+  box-shadow: 0 4px 15px #c7a0ce55;
+}
+
+.memory img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 11px;
+}
+
+.memory figcaption {
+  padding: 8px 2px 2px;
+  font-size: 13px;
+}
+
+.big-heart {
+  font-size: 65px;
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.13); }
+}
+
+.small-note { font-size: 13px; opacity: .8; }
+
+@media (max-width: 360px) {
+  .card { padding: 22px 14px; }
+  .memory-grid { gap: 8px; }
+  .wish-text { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: PASSWORD -->
+<section class="page active" id="page1">
+  <div class="card">
+    <div class="big-heart">💗</div>
+    <h1 style="font-size:29px">Enter your pass 🔐</h1>
+    <p class="subtitle">A little surprise is waiting for you! 🎀</p>
+    <form id="passForm">
+      <input id="password" type="password" placeholder="Enter your password" autocomplete="off">
+      <button type="submit">Unlock my surprise 💌</button>
+    </form>
+    <p class="error" id="error"></p>
+  </div>
+</section>
+
+<!-- PAGE 2: BIRTHDAY COVER -->
+<section class="page" id="page2">
+  <div class="card">
+    <div class="big-heart">🎂</div>
+    <h1>Happy Birthday<br>My Baby Heartbeat 💗</h1>
+    <p class="subtitle">🌷💋🧸🎀✨💞</p>
+    <p>Today is all about YOU! 🥹💕</p>
+    <button onclick="showPage(3)">Next 💗 ➜</button>
+  </div>
+</section>
+
+<!-- PAGE 3: MAIN WISH -->
+<section class="page" id="page3">
+  <div class="card wish-card">
+    <h2>🎀 A little wish for you 🎀</h2>
+    <div class="wish-text">🎂💗🌷 HAPPY BIRTHDAY, MY HEARTBEAT 🌷💗🎂
+
+ওইইই আমার হার্টবিটtt! 😭💋❤️
+
+শুভ জন্মদিন রে আমার পাগলি, চেচ্চর, বেয়াদব, মাথামোটা, ঝগড়াটে, বদমাইশ একটা বান্ধবী! 😂🤦🏻‍♀️ তুই একটা আস্ত পাগল, তোর মাথায় যে কী চলে আল্লাহই জানে! 🙂🔪🤣
+
+তোর সঙ্গে ঝগড়া না করলে আমার দিন কাটে না, আর তোর সঙ্গে কথা না বললে মনে হয় আমার বিনোদন মন্ত্রণালয় বন্ধ হয়ে গেছে! 😭😂 তুই আমাকে জ্বালাবি, আমি তোকে জ্বালাব, তারপর আবার নিজেরাই কথা বলতে আসব! 🤡💗
+
+আর শোন হার্টবিট! 😒🔪 আমার সঙ্গে কথা বলা তোর ডেইলি ডিউটি! আমার মেসেজের রিপ্লাই দিতে দেরি হলে কৈফিয়ত দিতে হবে! 🙂🤌🏻 আমার সঙ্গে কথা না বলে শান্তিতে থাকার স্বপ্ন দেখিসও না! 😂 আর আমি রাগ করলে আমাকে মানাতে হবে, কারণ আমি রাগ করলে আমি নিজেও জানি না আমার কী চাই! 😭🤣💋
+
+মজা বাদ দিলে রে পাগলি, 🥹❤️‍🩹 তুই আমার কাছে অনেক স্পেশাল। আমাদের যতই ঝগড়া হোক, যতই রাগ-অভিমান হোক, আমি চাই না কখনো আমাদের বন্ধুত্বটা হারিয়ে যাক। তোর হাসি, তোর পাগলামি, তোর সঙ্গে কাটানো মুহূর্তগুলো আমার কাছে ভীষণ প্রিয়! 🫂💗
+
+আল্লাহ যেন তোর সব স্বপ্ন পূরণ করেন, তোর মুখের হাসিটা সবসময় এমনই রাখেন। আর আমাদের বন্ধুত্বটা যেন সারাজীবন টিকে থাকে! 🥹🤲🏻💝
+
+LOVE YOU SO MUCH, MY HEARTBEAT! 😭💗🫶🏻
+
+আর হ্যাঁ, জন্মদিন তোর, ট্রিট আমার চাই! ট্রিট না দিলে তোর সঙ্গে ৫ মিনিট কথা বলা বন্ধ! 🙂🔪😂
+
+꧁༺💗 আমার হার্টবিট, আমার পাগলি, আমার বেস্টি FOREVER! 💗༻꧂</div>
+    <button onclick="showPage(4)">Next ➜ 💕</button>
+  </div>
+</section>
+
+<!-- PAGE 4: SIX MEMORIES -->
+<section class="page" id="page4">
+  <div class="card">
+    <h1 style="font-size:28px">আমাদের কিছু Memory 🥹💗</h1>
+    <p class="subtitle">Little moments, big memories! 🌷</p>
+
+    <div class="memory-grid">
+      <figure class="memory">
+        <img src="ss1.jpg" alt="Memory 1">
+        <figcaption>Memory 01 💗</figcaption>
+      </figure>
+      <figure class="memory">
+        <img src="ss2.jpg" alt="Memory 2">
+        <figcaption>Memory 02 🌷</figcaption>
+      </figure>
+      <figure class="memory">
+        <img src="ss3.jpg" alt="Memory 3">
+        <figcaption>Memory 03 🫶🏻</figcaption>
+      </figure>
+      <figure class="memory">
+        <img src="ss4.jpg" alt="Memory 4">
+        <figcaption>Memory 04 🎀</figcaption>
+      </figure>
+      <figure class="memory">
+        <img src="ss5.jpg" alt="Memory 5">
+        <figcaption>Memory 05 🧸</figcaption>
+      </figure>
+      <figure class="memory">
+        <img src="ss6.jpg" alt="Memory 6">
+        <figcaption>Memory 06 💋</figcaption>
+      </figure>
+    </div>
+
+    <p class="small-note">Every memory with you is special. 💞</p>
+    <button onclick="showPage(5)">One last thing... ➜ 💗</button>
+  </div>
+</section>
+
+<!-- PAGE 5: FINAL MESSAGE -->
+<section class="page" id="page5">
+  <div class="card">
+    <div class="big-heart">👯‍♀️💗</div>
+    <h1>Happy Birthday,<br>My Crime Partner! 🎂</h1>
+    <h2 style="font-size:23px">Love you so much, my BFF! 💋🫶🏻</h2>
+    <p>Partners in crime today, tomorrow and forever! 🤞🏻💕</p>
+    <p>আমার পাগলি, আমার হার্টবিট, আমার বেস্টি! 🌷</p>
+    <button onclick="closeSurprise()">Close 💌</button>
+  </div>
+</section>
+
+<script>
+function showPage(number) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+  document.getElementById('page' + number).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('passForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const entered = document.getElementById('password').value;
+  const error = document.getElementById('error');
+
+  if (entered === 'justfocusit') {
+    error.textContent = '';
+    showPage(2);
+  } else {
+    error.textContent = 'Oops! Wrong password, try again 🥺💗';
+  }
+});
+
+function closeSurprise() {
+  document.getElementById('page5').innerHTML = `
+    <div class="card">
+      <div class="big-heart">💗</div>
+      <h1>Surprise Completed! 🎀</h1>
+      <p>Happy Birthday once again, my Heartbeat! 🥹🌷</p>
+      <p>Love you forever, bestie! 💋💕</p>
+      <button onclick="showPage(1)">Replay 🔄</button>
+    </div>`;
+}
+</script>
+</body>
+</html>
